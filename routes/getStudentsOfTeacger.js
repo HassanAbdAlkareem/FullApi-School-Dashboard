@@ -3,7 +3,7 @@ const Teacher = require("../models/teacher");
 const verfiyToken = require("../middleware/verfiyToken");
 
 // get students for teacher
-router.get("/get-students/:id", verfiyToken, async (req, res) => {
+router.get("/get-students/:id", async (req, res) => {
   try {
     // i need id teacher from fron-end
     const teacher = await Teacher.findById(req.params.id);
