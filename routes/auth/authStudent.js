@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const Student = require("../models/student");
+const Student = require("../../models/student");
 const jwt = require("jsonwebtoken");
-const upload = require("../middleware/uploadImage");
+const upload = require("../../middleware/uploadImage");
 
 // register
 router.post("/register", upload.single("profilePic"), async (req, res) => {

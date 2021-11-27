@@ -19,12 +19,12 @@ router.get("/search-lesson", verfiyToken, async (req, res) => {
 
     const student = await Student.findById(idStudent);
 
-    const maping = getLesson.filter(
+    const filter = getLesson.filter(
       (teacher) => teacher.governorate == student.governorate
     );
     //
     if (getLesson.length > 0) {
-      return res.status(200).send(maping);
+      return res.status(200).send(filter);
     } else {
       return res.status(205).send("not found this teacher");
     }
@@ -33,7 +33,7 @@ router.get("/search-lesson", verfiyToken, async (req, res) => {
   }
 });
 
-router.post("/choose-teacher/:id", verfiyToken, async (req, res) => {
+router.post("/choose-teacher/:id", async (req, res) => {
   // from front end in body
   const { studentId } = req.body;
 
@@ -41,7 +41,7 @@ router.post("/choose-teacher/:id", verfiyToken, async (req, res) => {
     //push new teacher for student
     const student = await Student.findById(studentId);
     const teacher = await Teacher.findById(req.params.id).select(
-      "-email -password  -age -students"
+      "-email -password  -age -students -messages"
     );
 
     const verfiyForTeacher = student.chooseTeacher.find(
@@ -53,7 +53,7 @@ router.post("/choose-teacher/:id", verfiyToken, async (req, res) => {
     student.chooseTeacher.push(teacher);
     const updateStudent = await Student.findByIdAndUpdate(studentId, student, {
       new: true,
-    });
+    }).select("-messages");
 
     //push new student for teacher
     const teacher2 = await Teacher.findById(req.params.id);
@@ -62,17 +62,10 @@ router.post("/choose-teacher/:id", verfiyToken, async (req, res) => {
     );
 
     teacher2.students.push(student2);
-    const updateTeacher = await Teacher.findByIdAndUpdate(
-      req.params.id,
-      teacher2,
-      { new: true }
-    );
+    await Teacher.findByIdAndUpdate(req.params.id, teacher2, { new: true });
 
     // ------------------------------------------- //
-    res.status(200).json({
-      student: updateStudent,
-      teacher: updateTeacher,
-    });
+    res.status(200).json(updateStudent);
   } catch (error) {
     res.status(400).send(error.message);
   }

@@ -10,12 +10,13 @@ app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
 // my router
-const routerAuthTeacher = require("./routes/authTeacher");
-const routerAuthStudent = require("./routes/authStudent");
+const routerAuthTeacher = require("./routes/auth/authTeacher");
+const routerAuthStudent = require("./routes/auth/authStudent");
 const routerCategoire = require("./routes/categories");
 const routerStudentChooseLesson = require("./routes/studentChooseTeacher");
 const routerGetStudentOfTeacher = require("./routes/getStudentsOfTeacger");
 const routerPostQusetion = require("./routes/postQuestion");
+const routerChat = require("./routes/caht");
 
 // connect to db
 mongoose
@@ -39,8 +40,11 @@ app.use("/api/categoires/", routerCategoire);
 //router for post question
 app.use("/api/question/", routerPostQusetion);
 
+// router caht teacher
+app.use("/api/chat/", routerChat);
+
 //
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`start server at port ${port}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`start server at port ${PORT}`);
 });
