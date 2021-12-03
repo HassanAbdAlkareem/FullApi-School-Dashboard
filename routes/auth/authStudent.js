@@ -8,7 +8,7 @@ router.post("/register", upload.single("profilePic"), async (req, res) => {
   try {
     const Checkemail = await Student.findOne({ email: req.body.email });
     if (Checkemail)
-      return res.status(404).send("This account is defined pleace login ");
+      return res.status(404).send("This account is defined pleace login");
     //
     // const { path } = req.file;
     const newStudent = await new Student({

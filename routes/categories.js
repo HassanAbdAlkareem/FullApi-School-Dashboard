@@ -1,9 +1,43 @@
 const router = require("express").Router();
-const Categoires = require("../models/categories");
+const categoriesMaterails = require("../models/categoires/categoriesMaterails");
+const categoriesGovernorates = require("../models/categoires/categoriesGovernorates");
+const categoiresRegoin = require("../models/categoires/categoriesRegion");
 
-router.post("/", async (req, res) => {
+// categoires materails
+router.post("/materails", async (req, res) => {
   try {
-    const newCategoires = await new Categoires(req.body);
+    const newCategoires = await new categoriesMaterails(req.body);
+    res.status(200).send(newCategoires);
+    await newCategoires.save();
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.get("/materails", async (req, res) => {
+  try {
+    const getCategoires = await categoriesMaterails.find();
+    res.status(200).send(getCategoires);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.delete("/materails/:id", async (req, res) => {
+  try {
+    await categoriesMaterails.findByIdAndDelete(req.params.id, {
+      new: true,
+    });
+    res.status(200).send("categoires has been deleted");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+// categoires governorates
+router.post("/governorates", async (req, res) => {
+  try {
+    const newCategoires = await new categoriesGovernorates(req.body);
     res.status(200).send(newCategoires);
     await newCategoires.save();
   } catch (error) {
@@ -12,18 +46,18 @@ router.post("/", async (req, res) => {
 });
 
 //
-router.get("/", async (req, res) => {
+router.get("/governorates", async (req, res) => {
   try {
-    const getCategoires = await Categoires.find();
+    const getCategoires = await categoriesGovernorates.find();
     res.status(200).send(getCategoires);
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/governorates/:id", async (req, res) => {
   try {
-    await Categoires.findByIdAndDelete(req.params.id, {
+    await categoriesGovernorates.findByIdAndDelete(req.params.id, {
       new: true,
     });
     res.status(200).send("categoires has been deleted");
@@ -31,5 +65,39 @@ router.delete("/:id", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+//
+
+// categoires region
+router.post("/region", async (req, res) => {
+  try {
+    const newCategoires = await new categoiresRegoin(req.body);
+    res.status(200).send(newCategoires);
+    await newCategoires.save();
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+//
+router.get("/region", async (req, res) => {
+  try {
+    const getCategoires = await categoiresRegoin.find();
+    res.status(200).send(getCategoires);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.delete("/region/:id", async (req, res) => {
+  try {
+    await categoiresRegoin.findByIdAndDelete(req.params.id, {
+      new: true,
+    });
+    res.status(200).send("categoires has been deleted");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+//
 
 module.exports = router;

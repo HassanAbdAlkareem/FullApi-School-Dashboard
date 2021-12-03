@@ -36,7 +36,6 @@ router.get("/:id", verfiy, async (req, res) => {
       subject: teacher.teachingSpecialty[0],
     });
 
-    console.log(getQuestions);
     getQuestions
       ? res.status(200).send(getQuestions)
       : res.status(404).send("no questions yet");

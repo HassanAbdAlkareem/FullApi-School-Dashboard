@@ -17,6 +17,8 @@ const routerStudentChooseLesson = require("./routes/studentChooseTeacher");
 const routerGetStudentOfTeacher = require("./routes/getStudentsOfTeacger");
 const routerPostQusetion = require("./routes/postQuestion");
 const routerChat = require("./routes/caht");
+const routerAdmin = require("./routes/auth/authAdmin");
+const routerGetStudenAndfTeacherForAdmin = require("./routes/admin/get");
 
 // connect to db
 mongoose
@@ -42,6 +44,10 @@ app.use("/api/question/", routerPostQusetion);
 
 // router caht teacher
 app.use("/api/chat/", routerChat);
+
+// router admin
+app.use("/api/admin/", routerAdmin);
+app.use("/api/admin/get/", routerGetStudenAndfTeacherForAdmin);
 
 //
 const PORT = process.env.PORT || 5000;

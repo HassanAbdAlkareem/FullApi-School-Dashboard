@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const categories = new mongoose.Schema(
+const categoriesMaterails = new mongoose.Schema(
   {
     nameMaterial: { type: String, required: true },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Categoires", categories);
+module.exports = mongoose.model("Categories-Materails", categoriesMaterails);

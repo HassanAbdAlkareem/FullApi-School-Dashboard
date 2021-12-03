@@ -84,26 +84,6 @@ router.get("/", async (req, res) => {
   } catch (error) {
     res.status(400).send(error.message);
   }
-  //   const teacher = await Teacher.findById(req.params.id).select(
-  //     "students name"
-  //   );
-  //   const messages = await Chat.find();
-  //   const map = messages.map((message) => message);
-  //   const getMessagesStudentForTeacher = messages.map((message) => {
-  //     return teacher.students.filter((student) => {
-  //       return message.infoSender.name === student.name;
-  //     });
-  //   });
-  //   // console.log(getMessagesStudentForTeacher);
-  //   const getmessagesTeacher = await Chat.find();
-  //   const messagesTeacher = getmessagesTeacher.filter(
-  //     (message) => message.infoSender.name == teacher.name
-  //   );
-  //   res.status(200).json({
-  //     messagesStudent: getMessagesStudentForTeacher,
-  //     messagesTeacher: messagesTeacher,
-  //   });
-  //
 });
 
 module.exports = router;

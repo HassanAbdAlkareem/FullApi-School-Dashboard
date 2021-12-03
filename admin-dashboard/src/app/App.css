@@ -1,0 +1,343 @@
+body {
+  direction: rtl;
+  background-color: rgb(203, 207, 209);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.login {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 3rem auto;
+}
+
+.login .for-margin {
+  margin: 0 1rem;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.login h2 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.login .wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login .input {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login label {
+  margin-bottom: 6px;
+  text-align: right;
+}
+
+.login .wrapper input {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 1.5rem;
+  transition: all ease 0.5s;
+  border: 2px solid #999;
+  outline: 1px solid transparent;
+}
+
+.login .wrapper input:hover {
+  border: 2px solid rgb(0, 102, 143);
+  outline: 1px solid rgb(0, 102, 143);
+}
+.login .wrapper input:focus {
+  outline: 1px solid rgb(0, 102, 143);
+  border: 2px solid rgb(0, 102, 143);
+}
+
+.login .button {
+  text-align: center;
+  margin: 1rem;
+}
+
+.login button {
+  background-color: rgb(14, 14, 70);
+  border: 1px solid transparent;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all ease-in-out 0.3s;
+  padding: 5px 12px;
+}
+
+.login button:hover {
+  background-color: transparent;
+  border: 1px solid rgb(14, 14, 70);
+
+  color: rgb(14, 14, 70);
+}
+
+/* end the login */
+
+.navbarr {
+  background-color: #fff;
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.2);
+  padding: 12px 8px;
+  border-radius: 5px;
+  color: #333;
+  margin: 10px 1rem 0 1rem;
+}
+
+.navbarr .logo {
+  display: flex;
+  align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+.navbarr .logo h2 {
+  margin: 0;
+}
+
+.navbarr .logo .icon {
+  font-size: 35px;
+  margin-left: 8px;
+  display: flex;
+}
+
+/* end navbar  */
+
+/* start side bar */
+
+.parent-flex {
+  display: flex;
+}
+
+.parent-flex .sidebar {
+  flex: 4;
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.2);
+  background-color: #fff;
+  display: flex;
+  border-radius: 5px;
+  height: 100%;
+  padding: 1rem 0;
+  margin: 1rem 5px;
+}
+
+.parent-flex .home {
+  flex: 8;
+  margin: 1rem 9px;
+}
+
+.parent-flex .sidebar .wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4px;
+}
+
+.parent-flex .sidebar .wrapper > div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 19px;
+  width: 100%;
+  transition: all ease 0.4s;
+}
+
+.parent-flex .sidebar .wrapper > div:hover {
+  letter-spacing: 2px;
+}
+
+.parent-flex .sidebar .wrapper > div:not(:last-child) {
+  margin-bottom: 15px;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.parent-flex .sidebar .wrapper > div a {
+  margin-right: 5px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.parent-flex .sidebar .wrapper .icon {
+  margin-left: 6px;
+  font-size: 22px;
+}
+
+/* end sidebar  */
+
+/* start interfice */
+
+.interface .wrapper .count {
+  display: flex;
+  align-items: center;
+  color: #333;
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.2);
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.interface .wrapper .icon {
+  font-size: 30px;
+  margin-left: 10px;
+}
+.interface .wrapper div span {
+  font-size: 22px;
+}
+
+/* end interface */
+
+/* start teacher */
+
+.parent-teacher .wrapper,
+.parent-students .wrapper {
+  width: 100%;
+}
+
+.parent-teacher .wrapper .teacher .img,
+.parent-students .wrapper .student .img {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.parent-teacher .wrapper .teacher img,
+.parent-students .wrapper .student img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgb(109, 15, 15);
+}
+
+.parent-teacher .wrapper .teacher,
+.parent-students .wrapper .student {
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.2);
+  padding: 1rem;
+  width: 100%;
+  text-align: right;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.parent-teacher .wrapper .teacher .info,
+.parent-students .wrapper .student .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.parent-teacher .wrapper .teacher .info span,
+.parent-students .wrapper .student .info span {
+  margin-bottom: 6px;
+  font-size: 18px;
+  width: 98%;
+}
+
+/* end  */
+
+/* start categoires */
+
+.materails {
+  text-align: right;
+}
+
+.materails .cate {
+  align-items: center;
+  background-color: #fff;
+  margin: 0 10px;
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.2);
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  padding: 3px 10px;
+}
+.materails .cate p {
+  font-size: 20px;
+  width: 100%;
+  margin: 0;
+}
+.materails .cate .icon {
+  font-size: 25px;
+  cursor: pointer;
+  color: rgb(102, 24, 24);
+  margin: 5px 0;
+}
+
+.materails .add-cate {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  margin-bottom: 1rem;
+}
+
+.materails .add-cate input {
+  padding: 10px;
+  transition: all ease 0.4s;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 8px 4px rgba(0);
+  border-radius: 30px;
+}
+
+.materails .add-cate input:hover {
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.4);
+}
+.materails .add-cate input:focus {
+  outline: none;
+}
+.materails .add-cate .icon {
+  font-size: 33px;
+  color: rgb(2, 80, 110);
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+/* media */
+
+@media (max-width: 520px) {
+  .app {
+    margin: 0 8px;
+  }
+}
+@media (min-width: 650px) {
+  .parent-flex .sidebar {
+    flex: 2.4;
+  }
+  .app {
+    margin: 0 25px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app {
+    margin: 0 4rem;
+  }
+  .parent-flex .sidebar {
+    flex: 1;
+  }
+}
+
+.no-yet {
+  text-align: center;
+  background: #fff;
+  padding: 10px;
+  font-size: 25px;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px 4px rgba(61, 49, 49, 0.2);
+}
+@media (min-width: 900px) {
+  .no-yet {
+    width: 40%;
+  }
+}
