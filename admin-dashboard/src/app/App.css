@@ -323,12 +323,20 @@ body {
   margin: 1rem;
 }
 
+.products .title .icon {
+  font-size: 25px;
+  margin-right: 10px;
+}
+.products .title {
+  display: flex;
+  margin: 1rem 0;
+  align-items: center;
+}
 .products .add-product h3 {
   text-align: center;
   border-radius: 10px;
-  margin: 1rem auto;
   color: #666;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 .products .add-product label {
   color: #888;
@@ -355,11 +363,18 @@ body {
 
 .products .add-product button {
   margin: 1rem auto;
-  padding: 3px 2rem;
+  padding: 2px 2rem;
   background-color: rgb(0, 102, 143);
   border: 1px solid transparent;
   color: white;
   border-radius: 4px;
+  display: flex;
+  font-size: 21px;
+  align-items: center;
+}
+.products .add-product button .icon {
+  margin-right: 10px;
+  font-size: 20px;
 }
 
 .products .map-products .product {

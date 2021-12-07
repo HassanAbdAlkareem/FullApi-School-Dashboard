@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { AiFillDelete, BsFillPlusCircleFill } from "react-icons/all";
+import { AiFillDelete, BsCartFill } from "react-icons/all";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -12,13 +12,13 @@ const Products = () => {
   //
   const location = useLocation();
   const path = location.pathname;
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://api-schooll.herokuapp.com/images/";
   //
   useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/categoires-products/"
+          "https://api-schooll.herokuapp.com/api/categoires-products/"
         );
         setProducts(res.data);
       } catch (error) {
@@ -30,7 +30,9 @@ const Products = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete("http://localhost:5000/api/categoires-products/" + id);
+      await axios.delete(
+        "https://api-schooll.herokuapp.com/api/categoires-products/" + id
+      );
       const filter = products.filter((cate) => cate._id !== id);
       setProducts(filter);
     } catch (error) {
@@ -39,14 +41,7 @@ const Products = () => {
   };
 
   const handleAdd = async (e) => {
-    console.log("start");
     e.preventDefault();
-    const newProduct = {
-      nameProduct,
-      desc,
-      price,
-      status: 0,
-    };
 
     try {
       const data = new FormData();
@@ -56,7 +51,7 @@ const Products = () => {
       data.append("imageProduct", file);
 
       const res = await axios.post(
-        "http://localhost:5000/api/categoires-products",
+        "https://api-schooll.herokuapp.com/api/categoires-products",
         data
       );
 
@@ -69,12 +64,13 @@ const Products = () => {
       console.log(error);
     }
   };
-  console.log(products);
   return (
     <div className="products">
       <div className="wrapper">
         <div className="add-product">
-          <h3>أضف منتج</h3>
+          <div className="title">
+            <h3>أضف منتج</h3>
+          </div>
 
           <form onSubmit={handleAdd} encType="multipart/form-data">
             <div className="row">
@@ -115,7 +111,10 @@ const Products = () => {
                   onChange={(e) => setFile(e.target.files[0])}
                 />
               </div>
-              <button type="submit">أضف </button>
+
+              <button type="submit">
+                أضافة المنتج <BsCartFill className="icon" />{" "}
+              </button>
             </div>
           </form>
         </div>
@@ -130,7 +129,7 @@ const Products = () => {
           <div className="row">
             {products.map((product) => {
               return (
-                <div className="col-sm-12 col-lg-6 col-xl-3">
+                <div key={product._id} className="col-sm-12 col-lg-6 col-xl-3">
                   <div className="product">
                     <div className="card">
                       {product.imageProduct && (

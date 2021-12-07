@@ -9,7 +9,7 @@ router.post("/", upload.single("imageProduct"), async (req, res) => {
       nameProduct: req.body.nameProduct,
       desc: req.body.desc,
       price: req.body.price,
-      imageProduct: req.file.originalname,
+      imageProduct: req.file.originalname || null,
     });
     newCategoires.save();
     res.status(200).send(newCategoires);

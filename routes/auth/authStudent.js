@@ -1,16 +1,26 @@
 const router = require("express").Router();
 const Student = require("../../models/student");
 const jwt = require("jsonwebtoken");
+const upload = require("../../middleware/uploadImage");
 
 // register
-router.post("/register", async (req, res) => {
+router.post("/register", upload.single("profilePic"), async (req, res) => {
   try {
     const Checkemail = await Student.findOne({ email: req.body.email });
     if (Checkemail)
       return res.status(404).send("This account is defined pleace login");
     //
     // const { path } = req.file;
-    const newStudent = await new Student(req.body);
+    const newStudent = await new Student({
+      name: req.body.name,
+      age: req.body.age,
+      email: req.body.email,
+      password: req.body.password,
+      phone: req.body.phone,
+      governorate: req.body.governorate,
+      Region: req.body.Region,
+      profilePic: req.file.originalname,
+    });
     //
     const token = jwt.sign(
       { email: newStudent.email, id: newStudent._id },
