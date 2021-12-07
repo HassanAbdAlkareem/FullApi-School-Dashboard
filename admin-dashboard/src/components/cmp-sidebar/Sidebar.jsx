@@ -7,6 +7,7 @@ import {
   IoLogOutSharp,
   FaSearch,
   IoLocation,
+  FaShoppingCart,
 } from "react-icons/all";
 import { Link } from "react-router-dom";
 import { UseGlobelContext } from "../../context/FunctionAlContext";
@@ -43,7 +44,7 @@ const Sidebar = () => {
         <div className="governorates">
           <Link to="governorates">
             <FaSearch className="icon" />
-            المحافضات
+            محافضات
           </Link>
         </div>
         <div className="regions">
@@ -52,8 +53,14 @@ const Sidebar = () => {
             المناطق
           </Link>
         </div>
+        <div className="products">
+          <Link to="products">
+            <FaShoppingCart className="icon" />
+            المنتجات
+          </Link>
+        </div>
         <div className="logout" onClick={() => setAdmin(null)}>
-          <Link to="/login">
+          <Link to="/">
             <IoLogOutSharp className="icon" />
             الخروج
           </Link>

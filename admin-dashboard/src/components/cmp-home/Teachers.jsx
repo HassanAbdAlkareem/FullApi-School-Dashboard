@@ -14,7 +14,9 @@ const Teachers = () => {
   useEffect(() => {
     const getTeachers = async () => {
       try {
-        const res = await axios.get(URL + "get/teachers");
+        const res = await axios.get(
+          "https://api-schooll.herokuapp.com/api/admin/get/teachers"
+        );
         setTeachers(res.data);
       } catch (error) {
         console.log(error);

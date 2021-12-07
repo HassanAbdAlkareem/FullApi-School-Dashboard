@@ -3,9 +3,10 @@ import axios from "axios";
 import {
   GiTeacher,
   IoSchoolSharp,
-  CgComponents,
+  SiSololearn,
   FaSearch,
   IoLocation,
+  FaShoppingCart,
 } from "react-icons/all";
 import { UseGlobelContext } from "../../context/FunctionAlContext";
 const Interface = () => {
@@ -14,28 +15,42 @@ const Interface = () => {
   const [lengthMaterials, setLengthMaterials] = useState(0);
   const [lengthGover, setLengthGover] = useState(0);
   const [lengthRegion, setLengthRegion] = useState(0);
+  const [lengthProducts, setLengthProducts] = useState(0);
 
   const { URL } = UseGlobelContext();
 
   useEffect(() => {
     const getTeachers = async () => {
       try {
-        const resTeachers = await axios.get(URL + "get/teachers");
+        const resTeachers = await axios.get(
+          "https://api-schooll.herokuapp.com/api/admin/get/teachers"
+        );
         setLengthTeachers(resTeachers.data.length);
-        const resStudents = await axios.get(URL + "get/students");
+        //
+        const resStudents = await axios.get(
+          "https://api-schooll.herokuapp.com/api/admin/get/students"
+        );
         setLengthStudents(resStudents.data.length);
+        //
         const resMaterails = await axios.get(
-          "http://localhost:5000/api/categoires/materails"
+          "https://api-schooll.herokuapp.com/api/categoires/materails"
         );
         setLengthMaterials(resMaterails.data.length);
+        //
         const resGover = await axios.get(
-          "http://localhost:5000/api/categoires/governorates"
+          "https://api-schooll.herokuapp.com/api/categoires/governorates"
         );
         setLengthGover(resGover.data.length);
+        //
         const resRegion = await axios.get(
-          "http://localhost:5000/api/categoires/region"
+          "https://api-schooll.herokuapp.com/api/categoires/region"
         );
         setLengthRegion(resRegion.data.length);
+        //
+        const resProducts = await axios.get(
+          "http://localhost:5000/api/categoires-products"
+        );
+        setLengthProducts(resProducts.data.length);
       } catch (error) {
         console.log(error);
       }
@@ -61,7 +76,7 @@ const Interface = () => {
           </div>
           <div className="col-sm-12 col-md-12 col-lg-6 col-xl-4">
             <div className="count">
-              <CgComponents className="icon" />
+              <SiSololearn className="icon" />
               <span>عدد المواد التدريسية {lengthMaterials}</span>
             </div>
           </div>
@@ -75,6 +90,12 @@ const Interface = () => {
             <div className="count">
               <IoLocation className="icon" />
               <span>عدد المناطق {lengthRegion}</span>
+            </div>
+          </div>
+          <div className="col-sm-12 col-md-12 col-lg-6 col-xl-4">
+            <div className="count">
+              <FaShoppingCart className="icon" />
+              <span>عدد المنتجات {lengthProducts}</span>
             </div>
           </div>
         </div>

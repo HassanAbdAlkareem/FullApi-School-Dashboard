@@ -13,6 +13,7 @@ import Materials from "../components/cmp-home/Materials";
 import Governorates from "../components/cmp-home/Governorates";
 import Region from "../components/cmp-home/Region";
 import "./App.css";
+import Products from "../components/cmp-home/Products";
 
 function App() {
   const { admin } = UseGlobelContext();
@@ -42,12 +43,13 @@ function App() {
               <Route path="/regions">
                 <Region />
               </Route>
+              <Route path="/products">
+                <Products />
+              </Route>
             </div>
           </div>
         ) : (
-          <Route exact path="/login">
-            <Login />
-          </Route>
+          <Login />
         )}
       </div>
     </Router>

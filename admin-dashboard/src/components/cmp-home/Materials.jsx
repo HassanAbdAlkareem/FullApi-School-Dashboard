@@ -14,7 +14,7 @@ const Materials = () => {
     const getMaterials = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/categoires/materails"
+          "https://api-schooll.herokuapp.com/api/categoires/materails"
         );
         setCategoires(res.data);
       } catch (error) {
@@ -27,7 +27,7 @@ const Materials = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        "http://localhost:5000/api/categoires/materails/" + id
+        "https://api-schooll.herokuapp.com/api/categoires/materails/" + id
       );
       const filter = categoires.filter((cate) => cate._id !== id);
       setCategoires(filter);
@@ -39,7 +39,7 @@ const Materials = () => {
   const handleAdd = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/categoires/materails",
+        "https://api-schooll.herokuapp.com/api/categoires/materails",
         {
           nameMaterial: nameMaterial,
         }

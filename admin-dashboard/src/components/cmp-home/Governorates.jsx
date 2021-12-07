@@ -14,7 +14,7 @@ const Governorates = () => {
     const getGovernorates = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/categoires/governorates"
+          "https://api-schooll.herokuapp.com/api/categoires/governorates"
         );
         setCategoiresGovernorates(res.data);
       } catch (error) {
@@ -27,7 +27,7 @@ const Governorates = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        "http://localhost:5000/api/categoires/governorates/" + id
+        "https://api-schooll.herokuapp.com/api/categoires/governorates/" + id
       );
       const filter = categoiresGovernorates.filter((cate) => cate._id !== id);
       setCategoiresGovernorates(filter);
@@ -39,7 +39,7 @@ const Governorates = () => {
   const handleAdd = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/categoires/governorates",
+        "https://api-schooll.herokuapp.com/api/categoires/governorates",
         {
           nameGovernorate: nameGovernorate,
         }

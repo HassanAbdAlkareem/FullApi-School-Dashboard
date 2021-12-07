@@ -14,7 +14,7 @@ const Region = () => {
     const getRegion = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/categoires/region"
+          "https://api-schooll.herokuapp.com/api/categoires/region"
         );
         setCategoiresRegion(res.data);
       } catch (error) {
@@ -26,7 +26,9 @@ const Region = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete("http://localhost:5000/api/categoires/region/" + id);
+      await axios.delete(
+        "https://api-schooll.herokuapp.com/api/categoires/region/" + id
+      );
       const filter = categoiresRegion.filter((cate) => cate._id !== id);
       setCategoiresRegion(filter);
     } catch (error) {
@@ -37,7 +39,7 @@ const Region = () => {
   const handleAdd = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/categoires/region",
+        "https://api-schooll.herokuapp.com/api/categoires/region",
         {
           nameRegion: nameRegion,
         }

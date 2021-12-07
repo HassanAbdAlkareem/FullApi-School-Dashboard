@@ -20,10 +20,13 @@ const Login = () => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post(URL + "login", {
-        email: formData.email,
-        password: formData.password,
-      });
+      const res = await axios.post(
+        "https://api-schooll.herokuapp.com/api/admin/login",
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
 
       console.log(res.data);
       res.data && window.location.replace("/");
