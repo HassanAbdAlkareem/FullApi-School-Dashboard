@@ -4,23 +4,13 @@ const jwt = require("jsonwebtoken");
 const upload = require("../../middleware/uploadImage");
 
 // register
-router.post("/register", upload.single("profilePic"), async (req, res) => {
+router.post("/register", async (req, res) => {
   const Checkemail = await Teacher.findOne({ email: req.body.email });
   if (Checkemail)
     return res.status(404).send("This account is defined pleace login ");
 
   try {
-    const newTeacher = await new Teacher({
-      name: req.body.name,
-      age: req.body.age,
-      email: req.body.email,
-      password: req.body.password,
-      phone: req.body.phone,
-      teachingSpecialty: req.body.teachingSpecialty,
-      governorate: req.body.governorate,
-      Region: req.body.Region,
-      profilePic: req?.file?.path,
-    });
+    const newTeacher = await new Teacher(req.body);
 
     const token = jwt.sign(
       { email: newTeacher.email, id: newTeacher._id },

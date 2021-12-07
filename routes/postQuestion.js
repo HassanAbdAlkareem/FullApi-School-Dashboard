@@ -6,18 +6,13 @@ const Student = require("../models/student");
 const verfiy = require("../middleware/verfiyToken");
 
 // post question for student
-router.post("/", [verfiy, upload.single("imageQuestion")], async (req, res) => {
+router.post("/", verfiy, async (req, res) => {
   const { idStudent } = req.body;
   const student = await Student.findById(req.body.idStudent).select(
     "name _id governorate"
   );
   try {
-    const newPostQuestion = await new PostQuestion({
-      student: student,
-      descQuestion: req.body.descQuestion,
-      subject: req.body.subject,
-      imageQuestion: req?.file?.path,
-    });
+    const newPostQuestion = await new PostQuestion(req.body);
     //
     await newPostQuestion.save();
     //

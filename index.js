@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 require("express-async-errors");
 const cors = require("cors");
 const app = express();
+const path = require("path");
 
 app.use(express.json());
 app.use(cors());
-app.use("/uploads", express.static("uploads"));
+app.use("/images/", express.static(path.join(__dirname, "./uploads")));
 
 // my router
 const routerAuthTeacher = require("./routes/auth/authTeacher");
@@ -19,6 +20,8 @@ const routerPostQusetion = require("./routes/postQuestion");
 const routerChat = require("./routes/caht");
 const routerAdmin = require("./routes/auth/authAdmin");
 const routerGetStudenAndfTeacherForAdmin = require("./routes/admin/get");
+const routerCategoireProducts = require("./routes/categoiresProducts");
+const upload = require("./middleware/uploadImage");
 
 // connect to db
 mongoose
@@ -38,7 +41,7 @@ app.use("/api/student/", routerStudentChooseLesson);
 
 //router categoires
 app.use("/api/categoires/", routerCategoire);
-
+app.use("/api/categoires-products", routerCategoireProducts);
 //router for post question
 app.use("/api/question/", routerPostQusetion);
 
@@ -49,6 +52,10 @@ app.use("/api/chat/", routerChat);
 app.use("/api/admin/", routerAdmin);
 app.use("/api/admin/get/", routerGetStudenAndfTeacherForAdmin);
 
+// router upload image
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  res.status(200).send("file has been uploaded");
+});
 //
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
