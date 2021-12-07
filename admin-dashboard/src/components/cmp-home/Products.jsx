@@ -18,7 +18,7 @@ const Products = () => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/categoires-products"
+          "http://localhost:5000/api/categoires-products/"
         );
         setProducts(res.data);
       } catch (error) {
@@ -39,6 +39,7 @@ const Products = () => {
   };
 
   const handleAdd = async (e) => {
+    console.log("start");
     e.preventDefault();
     const newProduct = {
       nameProduct,
@@ -48,23 +49,15 @@ const Products = () => {
     };
 
     try {
-      if (file) {
-        const data = new FormData();
-        const filename = Date.now() + file.name;
-        data.append("name", filename);
-        data.append("file", file);
-        newProduct.imageProduct = filename;
-        try {
-          await axios.post("http://localhost:5000/api/upload", data);
-          setFile(null);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      //
+      const data = new FormData();
+      data.append("nameProduct", nameProduct);
+      data.append("desc", desc);
+      data.append("price", price);
+      data.append("imageProduct", file);
+
       const res = await axios.post(
         "http://localhost:5000/api/categoires-products",
-        newProduct
+        data
       );
 
       setProducts([...products, res.data]);
@@ -83,7 +76,7 @@ const Products = () => {
         <div className="add-product">
           <h3>أضف منتج</h3>
 
-          <form onSubmit={handleAdd}>
+          <form onSubmit={handleAdd} encType="multipart/form-data">
             <div className="row">
               <div className="col-sm-12 col-lg-6 col-xl-3">
                 <label> (المادة الدراسية) أسم المنتج </label>
@@ -118,6 +111,7 @@ const Products = () => {
                 <label> صورة المنتج </label>
                 <input
                   type="file"
+                  filename="imageProduct"
                   onChange={(e) => setFile(e.target.files[0])}
                 />
               </div>

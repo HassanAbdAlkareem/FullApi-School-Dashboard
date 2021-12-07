@@ -1,11 +1,16 @@
 const router = require("express").Router();
-const upload = require("../middleware/uploadImage");
 const categoiresProducts = require("../models/categoires/categoiresProducts");
+const upload = require("../middleware/uploadImage");
 
 // categoires materails
-router.post("/", async (req, res) => {
+router.post("/", upload.single("imageProduct"), async (req, res) => {
   try {
-    const newCategoires = await new categoiresProducts(req.body);
+    const newCategoires = await new categoiresProducts({
+      nameProduct: req.body.nameProduct,
+      desc: req.body.desc,
+      price: req.body.price,
+      imageProduct: req.file.originalname,
+    });
     newCategoires.save();
     res.status(200).send(newCategoires);
     await newCategoires.save();

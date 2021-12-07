@@ -8,7 +8,7 @@ const path = require("path");
 
 app.use(express.json());
 app.use(cors());
-app.use("/images/", express.static(path.join(__dirname, "./uploads")));
+app.use("/images", express.static(path.join(__dirname, "./uploads/")));
 
 // my router
 const routerAuthTeacher = require("./routes/auth/authTeacher");
@@ -53,10 +53,14 @@ app.use("/api/admin/", routerAdmin);
 app.use("/api/admin/get/", routerGetStudenAndfTeacherForAdmin);
 
 // router upload image
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  res.status(200).send("file has been uploaded");
-});
-//
+// app.post("/api/upload/", upload.single("file"), (req, res) => {
+//   try {
+//     res.status(200).send("file has been uploaded");
+//   } catch (error) {
+//     res.status(400).send("something is error");
+//   }
+// });
+// //
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`start server at port ${PORT}`);
