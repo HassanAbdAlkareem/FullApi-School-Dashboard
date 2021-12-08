@@ -19,7 +19,7 @@ router.post("/register", upload.single("profilePic"), async (req, res) => {
       teachingSpecialty: req.body.teachingSpecialty,
       governorate: req.body.governorate,
       Region: req.body.Region,
-      profilePic: req.file.originalname,
+      profilePic: req?.file?.originalname,
     });
 
     const token = jwt.sign(
