@@ -35,11 +35,11 @@ router.get("/search-lesson", verfiyToken, async (req, res) => {
 
 router.post("/choose-teacher/:id", async (req, res) => {
   // from front end in body
-  const { studentId } = req.body;
+  const { idStudent } = req.body;
 
   try {
     //push new teacher for student
-    const student = await Student.findById(studentId);
+    const student = await Student.findById(idStudent);
     const teacher = await Teacher.findById(req.params.id).select(
       "-email -password  -age -students -messages"
     );
@@ -51,7 +51,7 @@ router.post("/choose-teacher/:id", async (req, res) => {
       return res.status(400).send("This teacher already exists");
 
     student.chooseTeacher.push(teacher);
-    const updateStudent = await Student.findByIdAndUpdate(studentId, student, {
+    const updateStudent = await Student.findByIdAndUpdate(idStudent, student, {
       new: true,
     }).select("-messages");
 
