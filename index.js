@@ -22,6 +22,7 @@ const routerAdmin = require("./routes/auth/authAdmin");
 const routerGetStudenAndfTeacherForAdmin = require("./routes/admin/get");
 const routerProducts = require("./routes/Products");
 const routerCategoiresProducts = require("./routes/categoiresProducts");
+const routerLastTeachers = require("./routes/getLast10Teachers");
 const upload = require("./middleware/uploadImage");
 
 // connect to db
@@ -35,6 +36,7 @@ mongoose
 //  router teacher
 app.use("/api/teacher/", routerAuthTeacher);
 app.use("/api/teacher/", routerGetStudentOfTeacher);
+app.use("/api/last-teachers/", routerLastTeachers);
 
 // router student
 app.use("/api/student/", routerAuthStudent);
