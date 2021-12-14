@@ -14,13 +14,13 @@ const Products = () => {
   //
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://api-schooll.herokuapp.com/images/";
   //
   useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/categoires-products/" + path
+          "https://api-schooll.herokuapp.com/api/categoires-products/" + path
         );
         setName(res.data.nameProduct);
         setProducts(res.data.products);
@@ -42,7 +42,7 @@ const Products = () => {
       data.append("imageProduct", file);
 
       const res = await axios.post(
-        "http://localhost:5000/api/products/" + path,
+        "https://api-schooll.herokuapp.com/api/products/" + path,
         data
       );
 
@@ -58,9 +58,12 @@ const Products = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete("http://localhost:5000/api/products/" + id, {
-        data: { idCategoire: path },
-      });
+      await axios.delete(
+        "https://api-schooll.herokuapp.com/api/products/" + id,
+        {
+          data: { idCategoire: path },
+        }
+      );
       const filter = products.filter((cate) => cate._id !== id);
       setProducts(filter);
     } catch (error) {

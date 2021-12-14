@@ -34,7 +34,8 @@ router.post("/:id", upload.single("imageProduct"), async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const Product = await Products.find();
+    const Product = await Products.find().sort({ _id: -1 }).limit(10);
+
     res.status(200).send(Product);
   } catch (error) {
     res.status(400).send(error.message);

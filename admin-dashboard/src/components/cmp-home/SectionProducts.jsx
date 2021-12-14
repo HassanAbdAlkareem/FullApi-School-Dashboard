@@ -19,7 +19,7 @@ const SectionProducts = () => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/categoires-products/"
+          "https://api-schooll.herokuapp.com/api/categoires-products/"
         );
         setCategoiresProducts(res.data);
       } catch (error) {
@@ -32,7 +32,7 @@ const SectionProducts = () => {
   const handleAddCategoiry = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/categoires-products/",
+        "https://api-schooll.herokuapp.com/api/categoires-products/",
         {
           nameProduct: nameCategoirey,
         }
@@ -47,7 +47,9 @@ const SectionProducts = () => {
 
   const handleDeleteCategoiry = async (id) => {
     try {
-      await axios.delete("http://localhost:5000/api/categoires-products/" + id);
+      await axios.delete(
+        "https://api-schooll.herokuapp.com/api/categoires-products/" + id
+      );
       const filter = categoiresProducts.filter((cate) => cate._id != id);
       setCategoiresProducts(filter);
       window.location.reload();
@@ -58,9 +60,12 @@ const SectionProducts = () => {
 
   const handleUpdateCategoire = async (id) => {
     try {
-      await axios.put("http://localhost:5000/api/categoires-products/" + id, {
-        nameProduct: updateNameCate,
-      });
+      await axios.put(
+        "https://api-schooll.herokuapp.com/api/categoires-products/" + id,
+        {
+          nameProduct: updateNameCate,
+        }
+      );
       window.location.reload();
     } catch (error) {
       console.log(error.message);
