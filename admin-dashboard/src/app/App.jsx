@@ -14,6 +14,7 @@ import Governorates from "../components/cmp-home/Governorates";
 import Region from "../components/cmp-home/Region";
 import "./App.css";
 import Products from "../components/cmp-home/Products";
+import SectionProducts from "../components/cmp-home/SectionProducts";
 
 function App() {
   const { admin } = UseGlobelContext();
@@ -43,8 +44,11 @@ function App() {
               <Route path="/regions">
                 <Region />
               </Route>
-              <Route path="/products">
+              <Route path="/products/:id">
                 <Products />
+              </Route>
+              <Route path="/add-section">
+                <SectionProducts />
               </Route>
             </div>
           </div>

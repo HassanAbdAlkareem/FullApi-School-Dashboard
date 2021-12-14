@@ -20,7 +20,8 @@ const routerPostQusetion = require("./routes/postQuestion");
 const routerChat = require("./routes/caht");
 const routerAdmin = require("./routes/auth/authAdmin");
 const routerGetStudenAndfTeacherForAdmin = require("./routes/admin/get");
-const routerCategoireProducts = require("./routes/categoiresProducts");
+const routerProducts = require("./routes/Products");
+const routerCategoiresProducts = require("./routes/categoiresProducts");
 const upload = require("./middleware/uploadImage");
 
 // connect to db
@@ -41,7 +42,11 @@ app.use("/api/student/", routerStudentChooseLesson);
 
 //router categoires
 app.use("/api/categoires/", routerCategoire);
-app.use("/api/categoires-products", routerCategoireProducts);
+app.use("/api/categoires-products/", routerCategoiresProducts);
+
+//router products
+app.use("/api/products", routerProducts);
+
 //router for post question
 app.use("/api/question/", routerPostQusetion);
 

@@ -9,18 +9,21 @@ const Products = () => {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const [price, setPrice] = useState(null);
+  const [name, setName] = useState("");
+
   //
   const location = useLocation();
-  const path = location.pathname;
-  const PF = "https://api-schooll.herokuapp.com/images/";
+  const path = location.pathname.split("/")[2];
+  const PF = "http://localhost:5000/images/";
   //
   useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          "https://api-schooll.herokuapp.com/api/categoires-products/"
+          "http://localhost:5000/api/categoires-products/" + path
         );
-        setProducts(res.data);
+        setName(res.data.nameProduct);
+        setProducts(res.data.products);
       } catch (error) {
         console.log(error);
       }
@@ -28,30 +31,18 @@ const Products = () => {
     getProducts();
   }, [path]);
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(
-        "https://api-schooll.herokuapp.com/api/categoires-products/" + id
-      );
-      const filter = products.filter((cate) => cate._id !== id);
-      setProducts(filter);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleAdd = async (e) => {
     e.preventDefault();
 
     try {
       const data = new FormData();
-      data.append("nameProduct", nameProduct);
+      data.append("name", nameProduct);
       data.append("desc", desc);
       data.append("price", price);
       data.append("imageProduct", file);
 
       const res = await axios.post(
-        "https://api-schooll.herokuapp.com/api/categoires-products",
+        "http://localhost:5000/api/products/" + path,
         data
       );
 
@@ -64,12 +55,26 @@ const Products = () => {
       console.log(error);
     }
   };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete("http://localhost:5000/api/products/" + id, {
+        data: { idCategoire: path },
+      });
+      const filter = products.filter((cate) => cate._id !== id);
+      setProducts(filter);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //
   return (
     <div className="products">
       <div className="wrapper">
         <div className="add-product">
           <div className="title">
-            <h3>أضف منتج</h3>
+            <h3>أضف منتج الى قسم {name}</h3>
           </div>
 
           <form onSubmit={handleAdd} encType="multipart/form-data">
@@ -120,14 +125,15 @@ const Products = () => {
         </div>
 
         <div className="map-products">
-          <h3> المنتجات </h3>
-          {products.length == 0 && (
+          <h3> منتجات قسم {name} </h3>
+          {products?.length == 0 && (
             <p style={{ margin: "2rem auto" }} className="no-yet">
               لاتوجد منتجات بعد ...
             </p>
           )}
           <div className="row">
-            {products.map((product) => {
+            {products?.map((product) => {
+              console.log(product._id);
               return (
                 <div key={product._id} className="col-sm-12 col-lg-6 col-xl-3">
                   <div className="product">
@@ -138,7 +144,7 @@ const Products = () => {
                         </div>
                       )}
                       <div className="info-card">
-                        <p>ألاسم : {product.nameProduct}</p>
+                        <p>ألاسم : {product.name}</p>
                         <p>الوصف : {product.desc}</p>
                         <p>السعر : {product.price}$</p>
                         <AiFillDelete

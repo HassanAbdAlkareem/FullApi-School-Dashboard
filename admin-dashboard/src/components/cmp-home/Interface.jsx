@@ -95,7 +95,7 @@ const Interface = () => {
           <div className="col-sm-12 col-md-12 col-lg-6 col-xl-4">
             <div className="count">
               <FaShoppingCart className="icon" />
-              <span>عدد المنتجات {lengthProducts}</span>
+              <span>عدد اقسام المنتجات {lengthProducts}</span>
             </div>
           </div>
         </div>
