@@ -57,7 +57,7 @@ router.post("/choose-teacher/:id", async (req, res) => {
 
     //push new student for teacher
     const teacher2 = await Teacher.findById(req.params.id);
-    const student2 = await Student.findById(studentId).select(
+    const student2 = await Student.findById(idStudent).select(
       "-email -password -chooseTeacher"
     );
 
