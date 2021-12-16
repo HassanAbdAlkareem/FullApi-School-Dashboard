@@ -25,6 +25,7 @@ const routerCategoiresProducts = require("./routes/categoiresProducts");
 const routerLastTeachers = require("./routes/getLast10Teachers");
 const routerUpdateTeacher = require("./routes/updateTeacher");
 const routerUpdateStudent = require("./routes/updateStudent");
+const routerCart = require("./routes/cart");
 const upload = require("./middleware/uploadImage");
 
 // connect to db
@@ -62,6 +63,9 @@ app.use("/api/chat/", routerChat);
 // router admin
 app.use("/api/admin/", routerAdmin);
 app.use("/api/admin/get/", routerGetStudenAndfTeacherForAdmin);
+
+//router cart
+app.use("/api/cart/", routerCart);
 
 // router upload image
 // app.post("/api/upload/", upload.single("file"), (req, res) => {
