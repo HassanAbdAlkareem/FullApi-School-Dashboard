@@ -48,7 +48,7 @@ const Interface = () => {
         setLengthRegion(resRegion.data.length);
         //
         const resProducts = await axios.get(
-          "http://localhost:5000/api/categoires-products"
+          "https://api-schooll.herokuapp.com/api/categoires-products"
         );
         setLengthProducts(resProducts.data.length);
       } catch (error) {

@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Cart = require("../models/cart");
-const Products = require("../models/products");
 
 // CREATE Cart
 router.post("/", async (req, res) => {
@@ -14,17 +13,18 @@ router.post("/", async (req, res) => {
 });
 
 // fetch products ui and push in my cart
-router.post("/products/:id", async (req, res) => {
+router.post("/products", async (req, res) => {
   try {
     const product = {
       productId: req.body.productId,
       quantity: req.body.quantity,
+      address: req.body.address,
     };
 
-    const cart = await Cart.findById(req.params.id);
+    const cart = await Cart.findOne({});
     cart.products.push(product);
 
-    const updateCart = await Cart.findByIdAndUpdate(req.params.id, cart, {
+    const updateCart = await Cart.updateOne({}, cart, {
       new: true,
     });
 
@@ -36,7 +36,7 @@ router.post("/products/:id", async (req, res) => {
 });
 
 //get products from cart
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const products = await Cart.find().populate({
       path: "products.productId",
@@ -46,19 +46,5 @@ router.get("/:id", async (req, res) => {
     res.status(500).send(error.message);
   }
 });
-
-// exports.getAllBooks = async (req, res) => {
-//   try {
-//     let data = await BookModel.findOne().populate({
-//       path: "copies.loaned_to",
-//       select:
-//         "first_name lastName phone_number address user_name email notifications",
-//     });
-//     res.status(200).json({ data: [...data], success: true });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json({ success: false, msg: err.message });
-//   }
-// };
 
 module.exports = router;

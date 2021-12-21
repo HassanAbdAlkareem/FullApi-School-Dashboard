@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Teacher = require("../../models/teacher");
 const jwt = require("jsonwebtoken");
 const upload = require("../../middleware/uploadImage");
+const Conversation = require("../../models/conversation");
 
 // register
 router.post("/register", upload.single("profilePic"), async (req, res) => {
@@ -28,6 +29,8 @@ router.post("/register", upload.single("profilePic"), async (req, res) => {
     );
 
     await newTeacher.save();
+    await Conversation.create({ teacherId: newTeacher._id });
+
     res.status(200).json({ data: newTeacher, token: token });
   } catch (error) {
     res.status(400).send(error.message);

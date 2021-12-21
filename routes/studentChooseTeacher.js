@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Student = require("../models/student");
 const Teacher = require("../models/teacher");
+const Converastion = require("../models/conversation");
 const verfiyToken = require("../middleware/verfiyToken");
 
 router.get("/search-lesson", verfiyToken, async (req, res) => {
@@ -34,7 +35,7 @@ router.get("/search-lesson", verfiyToken, async (req, res) => {
 });
 
 router.post("/choose-teacher/:id", async (req, res) => {
-  // from front end in body
+  // from front-end in body
   const { idStudent } = req.body;
 
   try {
@@ -53,8 +54,19 @@ router.post("/choose-teacher/:id", async (req, res) => {
     student.chooseTeacher.push(teacher);
     const updateStudent = await Student.findByIdAndUpdate(idStudent, student, {
       new: true,
-    }).select("-messages");
+    });
 
+    const conversationTeacher = await Converastion.findOne({
+      teacherId: req.params.id,
+    });
+    conversationTeacher.studentsId.push(idStudent);
+
+    await Converastion.updateOne(
+      { teacherId: req.params.id },
+      conversationTeacher
+    );
+
+    console.log(conversationTeacher);
     //push new student for teacher
     const teacher2 = await Teacher.findById(req.params.id);
     const student2 = await Student.findById(idStudent).select(
@@ -68,34 +80,6 @@ router.post("/choose-teacher/:id", async (req, res) => {
     res.status(200).json(updateStudent);
   } catch (error) {
     res.status(400).send(error.message);
-  }
-});
-
-router.delete("/delete-teacher/:id", verfiyToken, async (req, res) => {
-  // from front end in body
-  const { studentId } = req.body;
-  const student = await Student.findById(studentId);
-
-  try {
-    const teacher = await Teacher.findById(req.params.id);
-    const verfiyForTeacher = student.chooseTeacher.find(
-      (teacher) => teacher._id == req.params.id
-    );
-
-    if (!verfiyForTeacher)
-      return res.status(400).send("This teacher is not in your teaching");
-
-    student.chooseTeacher.pop(teacher);
-
-    const findStudentAndDelete = await Student.findByIdAndUpdate(
-      studentId,
-      student,
-      { new: true }
-    );
-    //
-    res.status(200).send(findStudentAndDelete);
-  } catch (error) {
-    res.status(400).send(error.messaeg);
   }
 });
 

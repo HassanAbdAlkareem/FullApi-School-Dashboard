@@ -6,7 +6,7 @@ const Products = new mongoose.Schema({
   price: { type: String },
   status: {
     type: String,
-    default: "Pending",
+    default: "قيد الانتظار",
   },
   imageProduct: { type: String, default: "" },
 });

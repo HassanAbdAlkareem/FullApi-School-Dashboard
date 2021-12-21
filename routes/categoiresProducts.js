@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const getCategoiresProducts = await categoiresProducts.find();
+    console.log(getCategoiresProducts);
     res.status(200).send(getCategoiresProducts);
   } catch (error) {
     res.status(500).send(error.message);

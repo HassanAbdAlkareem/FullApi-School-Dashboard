@@ -17,7 +17,6 @@ const routerCategoire = require("./routes/categories");
 const routerStudentChooseLesson = require("./routes/studentChooseTeacher");
 const routerGetStudentOfTeacher = require("./routes/getStudentsOfTeacger");
 const routerPostQusetion = require("./routes/postQuestion");
-const routerChat = require("./routes/caht");
 const routerAdmin = require("./routes/auth/authAdmin");
 const routerGetStudenAndfTeacherForAdmin = require("./routes/admin/get");
 const routerProducts = require("./routes/Products");
@@ -26,6 +25,8 @@ const routerLastTeachers = require("./routes/getLast10Teachers");
 const routerUpdateTeacher = require("./routes/updateTeacher");
 const routerUpdateStudent = require("./routes/updateStudent");
 const routerCart = require("./routes/cart");
+const routerConversation = require("./routes/conversation");
+const routerMessages = require("./routes/message");
 const upload = require("./middleware/uploadImage");
 
 // connect to db
@@ -58,7 +59,8 @@ app.use("/api/products", routerProducts);
 app.use("/api/question/", routerPostQusetion);
 
 // router caht teacher
-app.use("/api/chat/", routerChat);
+app.use("/api/conversations/", routerConversation);
+app.use("/api/messages/", routerMessages);
 
 // router admin
 app.use("/api/admin/", routerAdmin);
@@ -67,15 +69,6 @@ app.use("/api/admin/get/", routerGetStudenAndfTeacherForAdmin);
 //router cart
 app.use("/api/cart/", routerCart);
 
-// router upload image
-// app.post("/api/upload/", upload.single("file"), (req, res) => {
-//   try {
-//     res.status(200).send("file has been uploaded");
-//   } catch (error) {
-//     res.status(400).send("something is error");
-//   }
-// });
-// //
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`start server at port ${PORT}`);

@@ -10,11 +10,12 @@ import {
   IoLocation,
   IoIosArrowDropdownCircle,
   BsFillPlusCircleFill,
+  HiShoppingBag,
 } from "react-icons/all";
 import { useLocation } from "react-router-dom";
 
 import { Link } from "react-router-dom";
-import { UseGlobelContext } from "../../context/FunctionAlContext";
+import { UseGlobelContext } from "../context/FunctionAlContext";
 
 const Sidebar = () => {
   const [dropdown, setDropdown] = useState([]);
@@ -50,7 +51,7 @@ const Sidebar = () => {
         <div className="products-side">
           <div className="title" onClick={() => setOpenDropDown(!openDropDown)}>
             <IoIosArrowDropdownCircle className="icon" />
-            المنتجات
+            الملازم
           </div>
 
           <div className={openDropDown ? "dropdown" : "dropdown dont-show"}>
@@ -66,6 +67,12 @@ const Sidebar = () => {
               </div>
             </Link>
           </div>
+        </div>
+        <div className="shop">
+          <Link to="/shop">
+            <HiShoppingBag className="icon" />
+            التسوق
+          </Link>
         </div>
         <div className="teachers">
           <Link to="/teachers">

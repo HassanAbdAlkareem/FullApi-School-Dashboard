@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { UseGlobelContext } from "../context/FunctionAlContext";
 
 import Login from "../pages/Login";
-import Navbar from "../components/cmp-navbar/Navbar.jsx";
-import Sidebar from "../components/cmp-sidebar/Sidebar";
+import Navbar from "../components/Navbar.jsx";
+import Sidebar from "../components/Sidebar";
 import Interface from "../components/cmp-home/Interface";
 import Teachers from "../components/cmp-home/Teachers";
 import Students from "../components/cmp-home/Students";
@@ -15,6 +15,7 @@ import Region from "../components/cmp-home/Region";
 import "./App.css";
 import Products from "../components/cmp-home/Products";
 import SectionProducts from "../components/cmp-home/SectionProducts";
+import Cart from "../components/cmp-home/Cart";
 
 function App() {
   const { admin } = UseGlobelContext();
@@ -28,6 +29,9 @@ function App() {
             <div className="home">
               <Route exact path="/">
                 <Interface />
+              </Route>
+              <Route exact path="/shop">
+                <Cart />
               </Route>
               <Route path="/teachers">
                 <Teachers />

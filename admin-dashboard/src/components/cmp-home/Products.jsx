@@ -136,7 +136,6 @@ const Products = () => {
           )}
           <div className="row">
             {products?.map((product) => {
-              console.log(product._id);
               return (
                 <div key={product._id} className="col-sm-12 col-lg-6 col-xl-3">
                   <div className="product">
