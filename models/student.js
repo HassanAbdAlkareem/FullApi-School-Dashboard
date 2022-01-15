@@ -16,7 +16,7 @@ const StudentSchema = new mongoose.Schema(
     governorate: { type: String, required: true },
     Region: { type: String },
     profilePic: { type: String, default: "" },
-    chooseTeacher: { type: [Object] },
+    teachers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Teacher" }],
   },
   { timestamps: true }
 );

@@ -34,47 +34,37 @@ router.get("/search-lesson", verfiyToken, async (req, res) => {
   }
 });
 
-router.post("/choose-teacher/:id", async (req, res) => {
+router.post("/choose-teacher/", async (req, res) => {
   // from front-end in body
-  const { idStudent } = req.body;
+  const { idStudent, idTeacher } = req.body;
 
   try {
-    //push new teacher for student
+    // push new teacher for student
     const student = await Student.findById(idStudent);
-    const teacher = await Teacher.findById(req.params.id).select(
-      "-email -password  -age -students -messages"
-    );
 
-    const verfiyForTeacher = student.chooseTeacher.find(
-      (teacher) => teacher._id == req.params.id
+    const verfiyForTeacher = student.teachers.find(
+      (teacher) => teacher._id == idTeacher
     );
     if (verfiyForTeacher)
       return res.status(400).send("This teacher already exists");
 
-    student.chooseTeacher.push(teacher);
+    student.teachers.push(idTeacher);
+
     const updateStudent = await Student.findByIdAndUpdate(idStudent, student, {
       new: true,
     });
 
     const conversationTeacher = await Converastion.findOne({
-      teacherId: req.params.id,
+      teacherId: idTeacher,
     });
     conversationTeacher.studentsId.push(idStudent);
 
-    await Converastion.updateOne(
-      { teacherId: req.params.id },
-      conversationTeacher
-    );
-
-    console.log(conversationTeacher);
+    await Converastion.updateOne({ teacherId: idTeacher }, conversationTeacher);
     //push new student for teacher
-    const teacher2 = await Teacher.findById(req.params.id);
-    const student2 = await Student.findById(idStudent).select(
-      "-email -password -chooseTeacher"
-    );
+    const teacher2 = await Teacher.findById(idTeacher);
 
-    teacher2.students.push(student2);
-    await Teacher.findByIdAndUpdate(req.params.id, teacher2, { new: true });
+    teacher2.students.push(idStudent);
+    await Teacher.findByIdAndUpdate(idTeacher, teacher2, { new: true });
 
     // ------------------------------------------- //
     res.status(200).json(updateStudent);

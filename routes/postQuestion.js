@@ -44,6 +44,21 @@ router.get("/:id", verfiy, async (req, res) => {
   }
 });
 
+//
+router.put("/:id", verfiy, async (req, res) => {
+  try {
+    const updateQues = await PostQuestion.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+
+    res.status(200).send(updateQues);
+  } catch (error) {
+    res.status(412).send(error.message);
+  }
+});
+
 router.delete("/:id", verfiy, async (req, res) => {
   // i need id post question
   const postQuestion = await PostQuestion.findById(req.params.id);

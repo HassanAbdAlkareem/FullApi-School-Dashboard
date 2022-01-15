@@ -28,7 +28,6 @@ const Login = () => {
         }
       );
 
-      console.log(res.data);
       res.data && window.location.replace("/");
       setAdmin(res.data);
       //
